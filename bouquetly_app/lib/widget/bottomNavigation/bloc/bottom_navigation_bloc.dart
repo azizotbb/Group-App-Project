@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bouquetly_app/screen/cart/cart_screen.dart';
 import 'package:bouquetly_app/screen/explore/explore_screen.dart';
+import 'package:bouquetly_app/screen/sore/store_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -18,8 +20,8 @@ class BottomNavigationBloc
 
   List<Widget> listWidget = [
     ExploreScreen(),
-    Center(child: Text("2")),
-    Center(child: Text("3")),
+    StoreScreen(),
+    CartScreen(),
     Center(child: Text("4")),
   ];
 
