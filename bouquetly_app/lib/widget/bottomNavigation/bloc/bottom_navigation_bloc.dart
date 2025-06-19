@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bouquetly_app/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -19,7 +20,7 @@ class BottomNavigationBloc
     Center(child: Text("1")),
     Center(child: Text("2")),
     Center(child: Text("3")),
-    Center(child: Text("4")),
+    ProfileScreen(),
   ];
 
   BottomNavigationBloc() : super(BottomNavigationInitial()) {
