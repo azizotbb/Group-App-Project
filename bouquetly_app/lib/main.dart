@@ -1,3 +1,4 @@
+import 'package:bouquetly_app/screen/storeScreen.dart';
 import 'package:bouquetly_app/style/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.appTheme,
-      home: Container(),
+      home: Store(),
     );
   }
 }
