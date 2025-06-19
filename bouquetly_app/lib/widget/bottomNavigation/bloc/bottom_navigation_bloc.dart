@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bouquetly_app/screen/explore/explore_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -16,7 +17,7 @@ class BottomNavigationBloc
   // List of screens shown when changing bottom navigation
 
   List<Widget> listWidget = [
-    Center(child: Text("1")),
+    ExploreScreen(),
     Center(child: Text("2")),
     Center(child: Text("3")),
     Center(child: Text("4")),

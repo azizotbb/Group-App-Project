@@ -3,6 +3,7 @@ import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/auth/auth_button.dart';
 import 'package:bouquetly_app/widget/auth/auth_text_field.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
+import 'package:bouquetly_app/widget/bottomNavigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -39,7 +40,17 @@ class SignupScreen extends StatelessWidget {
 
                       SizedBox(height: 40),
 
-                      AuthButton(buttonText: "Sign up"),
+                      AuthButton(
+                        buttonText: "Sign up",
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BottomNavigationWidget(),
+                            ),
+                          );
+                        },
+                      ),
                       TextButton(
                         onPressed: () {
                           Navigator.pushReplacement(
