@@ -1,12 +1,12 @@
-import 'package:bouquetly_app/screen/auth/signup/signup_screen.dart';
+import 'package:bouquetly_app/screen/auth/signin/signin_screen.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/auth/auth_button.dart';
 import 'package:bouquetly_app/widget/auth/auth_text_field.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
 import 'package:flutter/material.dart';
 
-class SigninScreen extends StatelessWidget {
-  const SigninScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SigninScreen extends StatelessWidget {
           Center(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
-              height: 465,
+              height: 500,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -29,19 +29,23 @@ class SigninScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(24),
                   child: Column(
                     children: [
-                      Text("Sign In", style: AppTextStyle.logoText),
+                      Text("Sign Up", style: AppTextStyle.logoText),
+                      AuthTextField(hinttext: "Name"),
+                      SizedBox(height: 30),
                       AuthTextField(hinttext: "Enter email or your number"),
                       SizedBox(height: 30),
+
                       AuthTextField(hinttext: "Password"),
+
                       SizedBox(height: 40),
 
-                      AuthButton(buttonText: "Sign In"),
+                      AuthButton(buttonText: "Sign up"),
                       TextButton(
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignupScreen(),
+                              builder: (context) => SigninScreen(),
                             ),
                           );
                         },
