@@ -5,7 +5,7 @@ extension AppSize on BuildContext {
     return MediaQuery.of(this).size.width;
   }
 
-  gethight() {
+  getHight() {
     return MediaQuery.of(this).size.height;
   }
 }
