@@ -9,7 +9,12 @@ part 'bottom_navigation_state.dart';
 
 class BottomNavigationBloc
     extends Bloc<BottomNavigationEvent, BottomNavigationState> {
+  // Index of the selected item in the bottom navigation
+
   int selectIndex = 0;
+
+  // List of screens shown when changing bottom navigation
+
   List<Widget> listWidget = [
     Center(child: Text("1")),
     Center(child: Text("2")),
