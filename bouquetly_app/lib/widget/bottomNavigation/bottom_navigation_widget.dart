@@ -1,3 +1,5 @@
+import 'package:bouquetly_app/screen/store_cart/bloc/store_bloc.dart';
+import 'package:bouquetly_app/screen/store_cart/order/bloc/order_bloc.dart';
 import 'package:bouquetly_app/style/app_colors.dart';
 import 'package:bouquetly_app/widget/bottomNavigation/bloc/bottom_navigation_bloc.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +10,12 @@ class BottomNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BottomNavigationBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => BottomNavigationBloc()),
+        BlocProvider(create: (_) => StoreBloc()),
+         BlocProvider(create: (_) => OrderBloc()),
+      ],
       child: Builder(
         builder: (context) {
           final bloc = context.read<BottomNavigationBloc>();
@@ -19,7 +25,9 @@ class BottomNavigationWidget extends StatelessWidget {
               return Scaffold(
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: bloc.selectIndex,
+
                   selectedItemColor: Colors.black,
+                  unselectedItemColor: Colors.brown,
                   unselectedLabelStyle: TextStyle(
                     fontSize: 25,
                     color: Colors.transparent,
