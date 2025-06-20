@@ -19,7 +19,9 @@ class BottomNavigationWidget extends StatelessWidget {
               return Scaffold(
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: bloc.selectIndex,
+
                   selectedItemColor: Colors.black,
+                  unselectedItemColor: Colors.brown,
                   unselectedLabelStyle: TextStyle(
                     fontSize: 25,
                     color: Colors.transparent,

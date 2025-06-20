@@ -57,7 +57,9 @@ class ExploreScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Width: ${context.getWidth()} and Height: ${context.getHight()}'),
+              Text(
+                'Width: ${context.getWidth()} and Height: ${context.getHight()}',
+              ),
               Text('New', style: AppTextStyle.headerText),
               SizedBox(height: 10),
 

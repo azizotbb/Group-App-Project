@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bouquetly_app/screen/cart/cart_screen.dart';
 import 'package:bouquetly_app/screen/explore/explore_screen.dart';
+import 'package:bouquetly_app/screen/profile/profile_screen.dart';
 import 'package:bouquetly_app/screen/sore/store_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -22,7 +23,7 @@ class BottomNavigationBloc
     ExploreScreen(),
     StoreScreen(),
     CartScreen(),
-    Center(child: Text("4")),
+    ProfileScreen(),
   ];
 
   BottomNavigationBloc() : super(BottomNavigationInitial()) {
