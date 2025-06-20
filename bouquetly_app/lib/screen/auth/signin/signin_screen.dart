@@ -31,9 +31,9 @@ class SigninScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Text("Sign In", style: AppTextStyle.logoText),
-                      AuthTextField(hinttext: "Enter email or your number"),
+                      // AuthTextField(hinttext: "Enter email or your number"),
                       SizedBox(height: 30),
-                      AuthTextField(hinttext: "Password"),
+                      // AuthTextField(hinttext: "Password"),
                       SizedBox(height: 40),
 
                       AuthButton(

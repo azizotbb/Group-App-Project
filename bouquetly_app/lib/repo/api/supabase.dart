@@ -19,4 +19,27 @@ class SupabaseConnect {
       throw FormatException("There is error with connecting");
     }
   }
+
+  //Supabase sign-up integration
+  static Future<dynamic> signUp({
+    required String email,
+    required String password,
+    required String userName,
+  }) async {
+    try {
+      print("-------------------------------------------------------");
+      final AuthResponse user = await supabase!.client.auth.signUp(
+        password: password,
+        email: email,
+        data: {'username': userName},
+      );
+      return user.user;
+    } on AuthException catch (error) {
+      print("4");
+
+      throw AuthException(error.message);
+    } catch (error) {
+      throw FormatException("There is error with sign Up");
+    }
+  }
 }
