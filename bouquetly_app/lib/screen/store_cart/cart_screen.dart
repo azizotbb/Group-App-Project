@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bouquetly_app/model/itemModel.dart';
 import 'package:bouquetly_app/screen/store_cart/bloc/store_bloc.dart';
 import 'package:bouquetly_app/screen/store_cart/order/bloc/order_bloc.dart';
@@ -87,61 +89,6 @@ class CartScreen extends StatelessWidget {
                   return SizedBox();
                 },
               ),
-              ElevatedButton(
-                //add discount button
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                ),
-                onPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
-                      ),
-                    ),
-                    backgroundColor: const Color.fromARGB(
-                      255,
-                      236,
-                      232,
-                      228,
-                    ).withOpacity(0.9),
-                    builder: (context) {
-                      return Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              "Enter Discount Code",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(height: 10),
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: "Discount Code",
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Apply",
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
-                child: Text(
-                  "Add Discount",
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
 
               BlocBuilder<StoreBloc, StoreState>(
                 builder: (context, state) {
@@ -150,8 +97,13 @@ class CartScreen extends StatelessWidget {
                       backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
-                   
-
+                      final order_num = Random().nextInt(10000);
+                      context.read<OrderBloc>().add(
+                        orderevent(
+                          order_num: order_num,
+                          pricetotal: pricetotal,
+                        ),
+                      );
                     },
                     child: Text(
                       "Checkout",
@@ -161,7 +113,6 @@ class CartScreen extends StatelessWidget {
                 },
               ),
             ],
-
           ),
         ),
       ),

@@ -4,8 +4,10 @@ part of 'order_bloc.dart';
 sealed class OrderEvent {}
 
 class orderevent extends OrderEvent{
-  final List <String >orders; 
+ final int order_num; 
   final int pricetotal ;
 
-  orderevent({required this.orders, required this.pricetotal}); 
+  orderevent({required this.order_num, required this.pricetotal});
+
+ 
 }

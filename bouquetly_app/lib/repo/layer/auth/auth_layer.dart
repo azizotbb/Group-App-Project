@@ -3,10 +3,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthLayer {
   // Stores the authenticated user's ID after successful sign-up
-  String? userID;
+  String userID = "";
 
   // Stores additional user information
-  Map? userInfo;
+  Map userInfo = {};
 
   /// Method to sign up a new user using email, password, and name.
   ///
@@ -20,15 +20,30 @@ class AuthLayer {
     required String password,
   }) async {
     try {
-      final user = await SupabaseConnect.signUp(
+      await SupabaseConnect.signUp(
         email: email,
         password: password,
         userName: name,
       );
-      // Store user ID and metadata on successful registration
+    } on AuthException catch (error) {
+      throw AuthException(error.message);
+    } catch (error) {
+      throw FormatException(error.toString());
+    }
+  }
 
+  //Signs in an existing user with email and password.
+
+  signInMethod({required String email, required String password}) async {
+    try {
+      final user = await SupabaseConnect.signIn(
+        email: email,
+        password: password,
+      );
       userID = user.id;
       userInfo = user.userMetadata;
+
+      return user;
     } on AuthException catch (error) {
       throw AuthException(error.message);
     } catch (error) {
