@@ -150,33 +150,8 @@ class CartScreen extends StatelessWidget {
                       backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(20),
-                          ),
-                        ),
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          236,
-                          232,
-                          228,
-                        ).withOpacity(0.9),
-                        builder: (context) {
-                          return Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Column(
-                              children: [Text("Total: $pricetotal"), SizedBox(height: 10,), ElevatedButton(onPressed: (){
-                                final order=carrtitem.map((e){
-                                  return e.name;
-                                }).toList();
-                                context.read<OrderBloc>().add(orderevent(orders: order, pricetotal: pricetotal,));
-                              }, child: Text("Pay Now"))],
-                            ),
-                          );
-                        },
-                      );
+                   
+
                     },
                     child: Text(
                       "Checkout",
@@ -186,9 +161,19 @@ class CartScreen extends StatelessWidget {
                 },
               ),
             ],
+
           ),
         ),
       ),
     );
   }
 }
+
+
+
+// Text("Total: $pricetotal")
+
+//  final order=carrtitem.map((e){
+//                                   return e.name;
+//                                 }).toList();
+//                                 context.read<OrderBloc>().add(orderevent(orders: order, pricetotal: pricetotal,));
