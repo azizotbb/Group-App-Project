@@ -36,7 +36,7 @@ class ExploreScreen extends StatelessWidget {
                       children: [
                         CircleAvatar(radius: 30, backgroundColor: Colors.white),
                         SizedBox(width: 20),
-                        Text("Raghad Alsaykhain"),
+                        Text(bloc.authGetit.username),
                       ],
                     ),
                   ),
@@ -57,11 +57,9 @@ class ExploreScreen extends StatelessWidget {
                     leading: Icon(Icons.inventory),
                     title: Text("Store Location"),
                     onTap: () {
-                       Navigator.push(
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => Location(),
-                        ),
+                        MaterialPageRoute(builder: (context) => Location()),
                       );
                     },
                   ),

@@ -2,8 +2,9 @@ import 'package:bouquetly_app/repo/api/supabase.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthLayer {
-  // Stores the authenticated user's ID after successful sign-up
+  // Stores the authenticated user's ID and username after successful sign-up
   String userID = "";
+  String username = "";
 
   // Stores additional user information
   Map userInfo = {};
@@ -42,6 +43,7 @@ class AuthLayer {
       );
       userID = user.id;
       userInfo = user.userMetadata;
+      username = user.userMetadata["username"];
 
       return user;
     } on AuthException catch (error) {

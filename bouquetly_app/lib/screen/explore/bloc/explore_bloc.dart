@@ -1,12 +1,16 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bouquetly_app/repo/layer/auth/auth_layer.dart';
+import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 
 part 'explore_event.dart';
 part 'explore_state.dart';
 
 class ExploreBloc extends Bloc<ExploreEvent, ExploreState> {
+  final authGetit = GetIt.I.get<AuthLayer>();
+
   ExploreBloc() : super(ExploreInitial()) {
     on<LoadCarouselImages>(loadMethod);
     on<ChangeCarouselIndex>(changeMethod);

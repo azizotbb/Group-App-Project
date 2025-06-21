@@ -32,10 +32,15 @@ class SupabaseConnect {
         email: email,
         data: {'username': userName},
       );
+      print("1");
       return user.user;
     } on AuthException catch (error) {
+      print("2");
+
       throw AuthException(error.message);
     } catch (error) {
+      print("3");
+
       throw FormatException("There is error with sign Up");
     }
   }
