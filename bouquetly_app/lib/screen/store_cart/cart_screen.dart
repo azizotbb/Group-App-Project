@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:bouquetly_app/model/itemModel.dart';
 import 'package:bouquetly_app/screen/store_cart/bloc/store_bloc.dart';
 import 'package:bouquetly_app/screen/store_cart/order/bloc/order_bloc.dart';
+import 'package:bouquetly_app/style/app_colors.dart';
+import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/bottomNavigation/bloc/bottom_navigation_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -104,6 +106,54 @@ class CartScreen extends StatelessWidget {
                           pricetotal: pricetotal,
                         ),
                       );
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            backgroundColor: AppColors.lightBeige,
+                            child: Padding(
+                              padding: const EdgeInsets.all(24),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/Online Groceries-rafiki.png',
+                                  ),
+                                  const SizedBox(height: 20),
+                                  Text(
+                                    'Order Successful!',
+                                    style: AppTextStyle.headerText,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Your order has been placed successfully.',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 24),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     content: Text(
+                      //       "Your order has been placed successfully",
+                      //       style: TextStyle(color: Colors.black),
+                      //     ),
+                      //     duration: Duration(seconds: 3),
+                      //     backgroundColor: AppColors.darkBeige,
+                      //   ),
+                      // );
                     },
                     child: Text(
                       "Checkout",

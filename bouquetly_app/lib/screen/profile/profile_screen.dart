@@ -1,5 +1,6 @@
 import 'package:bouquetly_app/extension/app_size.dart';
 import 'package:bouquetly_app/screen/profile/account_settings_screen.dart';
+import 'package:bouquetly_app/style/app_colors.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
 import 'package:bouquetly_app/widget/profile_widgets/option_row.dart';
@@ -23,16 +24,14 @@ class ProfileScreen extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.amber,
+                        color: AppColors.darkBeige
                       ),
                       width: context.getWidth() * 0.3,
                       height: context.getWidth() * 0.3,
                       clipBehavior: Clip.hardEdge,
-                      child: Image.asset(
-                        'assets/images/flowey.png',
-                        fit: BoxFit.cover,
-                      ),
+                   
                     ),
+
                     SizedBox(height: 8),
                     Text(
                       'Flowey The Flower',
