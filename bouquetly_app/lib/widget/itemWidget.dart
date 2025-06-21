@@ -1,16 +1,19 @@
+import 'package:bouquetly_app/screen/store_cart/bloc/store_bloc.dart';
 import 'package:bouquetly_app/style/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Itemwidget extends StatelessWidget {
   final String image;
   final String name;
   final int price;
-
+  final String category;
   const Itemwidget({
     super.key,
     required this.image,
     required this.name,
     required this.price,
+    required this.category,
   });
 
   @override
@@ -27,7 +30,12 @@ class Itemwidget extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-            child: Image.asset(image, height: 120, fit: BoxFit.cover),
+            child: Image.asset(
+              image,
+              height: 120,
+              width: double.infinity,
+              fit: BoxFit.contain,
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(6),
@@ -35,16 +43,21 @@ class Itemwidget extends StatelessWidget {
               children: [
                 const SizedBox(height: 2),
                 Text(name, style: const TextStyle(fontSize: 16)),
+                Text(category, style: const TextStyle(fontSize: 12)),
                 const SizedBox(height: 2),
-                Text("${price}SAR", style: const TextStyle(fontSize: 16)),
+                Text("${price} SAR", style: const TextStyle(fontSize: 16)),
               ],
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<StoreBloc>().add(
+                additem(image: image, name: name, price: price),
+              );
+            },
             child: Text(
               "Add to cart",
-              style: TextStyle(color:AppColors.lightBeige, fontSize: 16),
+              style: TextStyle(color: Color(0xFFB6AFA9), fontSize: 16),
             ),
           ),
         ],

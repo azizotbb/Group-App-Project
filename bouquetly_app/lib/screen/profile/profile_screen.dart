@@ -1,15 +1,20 @@
 import 'package:bouquetly_app/extension/app_size.dart';
+import 'package:bouquetly_app/repo/layer/auth/auth_layer.dart';
 import 'package:bouquetly_app/screen/profile/settings/account_settings_screen.dart';
+import 'package:bouquetly_app/screen/splash/splash_screen.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
 import 'package:bouquetly_app/widget/profile_widgets/option_row.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final authGetit = GetIt.I.get<AuthLayer>();
+
     return Scaffold(
       body: Center(
         child: Stack(
@@ -35,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'Flowey The Flower',
+                      authGetit.username,
                       style: AppTextStyle.headerText.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -85,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                                       ),
                                       actions: [
                                         TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SplashScreen()));},
                                           child: Text(
                                             'Logout',
                                             style: TextStyle(

@@ -16,4 +16,4 @@ class CategoryWidget extends StatelessWidget {
       ),
     );
   }
-}
+} 

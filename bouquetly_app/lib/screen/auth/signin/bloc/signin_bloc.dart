@@ -8,12 +8,11 @@ import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-part 'signup_event.dart';
-part 'signup_state.dart';
+part 'signin_event.dart';
+part 'signin_state.dart';
 
-class SignupBloc extends Bloc<SignupEvent, SignupState> {
+class SigninBloc extends Bloc<SigninEvent, SigninState> {
   //Sign-up controllers to receive user inputs"
-  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -23,25 +22,24 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   // Access AuthLayer instance using GetIt for authentication handling
   final authGetit = GetIt.I.get<AuthLayer>();
 
-  SignupBloc() : super(SignupInitial()) {
-    on<CreateNewAccountEvent>(createNewAccountMethod);
+  SigninBloc() : super(SigninInitial()) {
+    on<LogInEvent>(logInMethod);
   }
 
-  /// Method to handle the sign-up process when CreateNewAccountEvent is triggered
-  ///
-  /// It takes the user input from the controllers and calls the AuthLayer's signUpMethod.
-  /// If successful, it emits a SuccessState. If an error occurs, it emits an ErrorState.
-  FutureOr<void> createNewAccountMethod(
-    CreateNewAccountEvent event,
-    Emitter<SignupState> emit,
+  // Method to handle the login logic
+  FutureOr<void> logInMethod(
+    LogInEvent event,
+    Emitter<SigninState> emit,
   ) async {
     try {
-      await authGetit.signUpMethod(
-        name: nameController.text,
+      await authGetit.signInMethod(
         email: emailController.text,
         password: passwordController.text,
       );
+
       emit(SuccessState());
+      print(authGetit.userID);
+      print(authGetit.userInfo);
     } on AuthException catch (error) {
       log(error.message);
       emit(ErrorState(msg: error.message));

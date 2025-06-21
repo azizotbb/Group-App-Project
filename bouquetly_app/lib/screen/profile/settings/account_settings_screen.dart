@@ -224,6 +224,13 @@ class AccountSettingsScreen extends StatelessWidget {
                                                             .globalKeyEmail
                                                             .currentState!
                                                             .validate()) {
+                                                          print('object');
+                                                          GetIt.I
+                                                              .get<AuthLayer>()
+                                                              .updateEmail(
+                                                                email: bloc
+                                                                    .confirmEmail,
+                                                              );
                                                           print('done');
                                                         }
                                                       },
@@ -247,13 +254,15 @@ class AccountSettingsScreen extends StatelessWidget {
                                   ),
                                   // here where the account will be deleted
                                   OptionRow(
+                                    onPressed: () {
+                                      print('Done');
+                                      GetIt.I.get<AuthLayer>().deleteUser(GetIt.I.get<AuthLayer>().userID);
+                                    },
                                     setIcon: Icons.delete,
                                     setText: 'Delete Account',
                                   ),
                                   OptionRow(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
+                                    onPressed: () {},
                                     setIcon: Icons.arrow_back,
                                     setText: 'Back',
                                   ),
