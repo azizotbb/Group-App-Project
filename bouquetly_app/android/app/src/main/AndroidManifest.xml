@@ -3,6 +3,8 @@
         android:label="bouquetly_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+         <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCrjCf_XMZKL45IzLqfZ0PwSX1dri8HTa0"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
