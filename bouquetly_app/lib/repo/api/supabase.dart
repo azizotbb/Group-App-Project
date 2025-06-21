@@ -42,4 +42,14 @@ class SupabaseConnect {
       throw FormatException("There is error with sign Up");
     }
   }
+
+
+//   static Future<dynamic> update({required String email}) async{
+//     final UserResponse res = await supabase!.client.auth.updateUser(
+//   UserAttributes(
+//     email: email,
+//   ),
+// );
+// // final User? updatedUser = res.user;
+  // }
 }

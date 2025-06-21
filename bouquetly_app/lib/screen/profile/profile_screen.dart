@@ -1,5 +1,5 @@
 import 'package:bouquetly_app/extension/app_size.dart';
-import 'package:bouquetly_app/screen/profile/account_settings_screen.dart';
+import 'package:bouquetly_app/screen/profile/settings/account_settings_screen.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
 import 'package:bouquetly_app/widget/profile_widgets/option_row.dart';
