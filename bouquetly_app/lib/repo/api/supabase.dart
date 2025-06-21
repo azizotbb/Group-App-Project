@@ -27,7 +27,6 @@ class SupabaseConnect {
     required String userName,
   }) async {
     try {
-      print("-------------------------------------------------------");
       final AuthResponse user = await supabase!.client.auth.signUp(
         password: password,
         email: email,
@@ -35,11 +34,28 @@ class SupabaseConnect {
       );
       return user.user;
     } on AuthException catch (error) {
-      print("4");
-
       throw AuthException(error.message);
     } catch (error) {
       throw FormatException("There is error with sign Up");
+    }
+  }
+
+  //Supabase sign-in integration
+
+  static Future<dynamic> signIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final AuthResponse user = await supabase!.client.auth.signInWithPassword(
+        password: password,
+        email: email,
+      );
+      return user.user;
+    } on AuthException catch (error) {
+      throw AuthException(error.message);
+    } catch (error) {
+      throw FormatException("There is error with sign in");
     }
   }
 }

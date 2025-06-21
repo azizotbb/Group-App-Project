@@ -4,7 +4,6 @@ import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/auth/auth_button.dart';
 import 'package:bouquetly_app/widget/auth/auth_text_field.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
-import 'package:bouquetly_app/widget/bottomNavigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,6 +32,7 @@ class SignupScreen extends StatelessWidget {
                       color: Colors.white.withOpacity(0.5),
                     ),
                     child: Form(
+                      key: bloc.formKey,
                       child: Padding(
                         padding: const EdgeInsets.all(24),
                         child: Column(
@@ -40,18 +40,49 @@ class SignupScreen extends StatelessWidget {
                             Text("Sign Up", style: AppTextStyle.logoText),
                             AuthTextField(
                               hinttext: "Name",
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "name is Empty";
+                                } else if (value.length > 12) {
+                                  return "Name must be less than 13 characters.";
+                                }
+                                return null;
+                              },
                               controller: bloc.nameController,
                             ),
                             SizedBox(height: 30),
                             AuthTextField(
                               hinttext: "Email ",
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "eamil is empty";
+                                } else if (!value.contains(
+                                  RegExp(
+                                    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$',
+                                  ),
+                                )) {
+                                  return "Please enter a valid email address";
+                                }
+                                return null;
+                              },
                               controller: bloc.emailController,
                             ),
                             SizedBox(height: 30),
 
                             AuthTextField(
                               hinttext: "Password",
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Password is Empty";
+                                } else if (value.length < 6) {
+                                  return "Password must be at least 6 characters long. Please try again";
+                                } else if (!value.contains(RegExp(r'\d'))) {
+                                  return "Please include at least one number";
+                                }
+                                return null;
+                              },
                               controller: bloc.passwordController,
+                              obscureText: true,
                             ),
 
                             SizedBox(height: 40),
@@ -64,20 +95,8 @@ class SignupScreen extends StatelessWidget {
                                   );
                                 }
                                 if (state is SuccessState) {
-                                  Future.delayed(
-                                    const Duration(seconds: 2),
-                                    () {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              BottomNavigationWidget(),
-                                        ),
-                                      );
-                                    },
-                                  );
                                   return Text(
-                                    "Register Successfully",
+                                    "A verification email has been sent.",
                                     style: TextStyle(color: Colors.green),
                                   );
                                 }
@@ -87,15 +106,9 @@ class SignupScreen extends StatelessWidget {
                             AuthButton(
                               buttonText: "Sign up",
                               onPressed: () {
-                                // Navigator.pushReplacement(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         BottomNavigationWidget(),
-                                //   ),
-                                // );
-
-                                bloc.add(CreateNewAccountEvent());
+                                if (bloc.formKey.currentState!.validate()) {
+                                  bloc.add(CreateNewAccountEvent());
+                                }
                               },
                             ),
                             TextButton(
