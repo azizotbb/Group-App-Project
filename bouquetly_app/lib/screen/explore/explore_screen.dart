@@ -1,4 +1,5 @@
 import 'package:bouquetly_app/extension/app_size.dart';
+import 'package:bouquetly_app/screen/store_cart/orderScreen.dart';
 import 'package:bouquetly_app/style/app_colors.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/custom_explore_item.dart';
@@ -45,9 +46,21 @@ class ExploreScreen extends StatelessWidget {
 
             ListTile(
               leading: Icon(Icons.inventory),
-              title: Text("Your shipment"),
-              onTap: () {},
+              title: Text("Your Order"),
+              onTap: () {
+              },
             ),
+
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("your order"),
+              onTap: (){
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Orderscreen()),
+                );
+              },
+            )
           ],
         ),
       ),

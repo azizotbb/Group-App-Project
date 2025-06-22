@@ -8,6 +8,6 @@ class orderevent extends OrderEvent{
   final int pricetotal ;
 
   orderevent({required this.order_num, required this.pricetotal});
-
- 
 }
+
+class loadordersevent extends OrderEvent{}

@@ -14,15 +14,28 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final authgetit = GetIt.I.get<AuthLayer>();
   OrderBloc() : super(OrderInitial()) {
     on<orderevent>(sendorder);
+    on<loadordersevent>(loadorders);
   }
 
   FutureOr<void> sendorder(orderevent event, Emitter<OrderState> emit) async {
     emit(orderLoding());
+    //  final orders =await ordergetit.getorders(userid:authgetit.userID );
     await ordergetit.send(
       ordernum: event.order_num,
       pricetotal: event.pricetotal,
       userid: authgetit.userID,
     );
-    emit(orderSuccces());
+    final orders = await ordergetit.getorders(userid: authgetit.userID);
+    emit(orderSuccces(orders: orders));
+  }
+
+  FutureOr<void> loadorders(
+    loadordersevent event,
+    Emitter<OrderState> emit,
+  ) async {
+    emit(orderLoding());
+    final orders = await ordergetit.getorders(userid: authgetit.userID);
+    print("here the orders user ${orders}");
+    emit(orderSuccces(orders: orders));
   }
 }
