@@ -50,6 +50,7 @@ A modern Flutter-based flower shop app that allows users to browse curated bouqu
 - 🗺️ Google Maps integration for pickup location
 - 🎠 Carousel-based product browsing
 - 👤 User Profile 
+- 🛍️ Order Summary
 - 🎨 Clean UI with Google Fonts and smooth animations
 
 
@@ -69,7 +70,7 @@ A modern Flutter-based flower shop app that allows users to browse curated bouqu
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/bouquetly_app.git
+git clone https://github.com/azizotbb/bouquetly_app.git
 
 # 2. Navigate to the project folder
 cd bouquetly_app
@@ -84,39 +85,6 @@ SUPABASE_ANON_KEY=your_key
 
 # 5. Run the app
 flutter run
-lib
-├── extension/                 # Extensions on classes or Dart core types
-├── model/                     # Data models (e.g., User, Product)
-├── repo/                      # Repository layer for data management
-│   ├── api/                   # API service calls or external services
-│   └── layer/                 # Logical layers, e.g., authentication
-│       └── auth/              # Authentication-related repo files
-├── screen/                    # Application screens (UI)
-│   ├── auth/                  # Authentication screens
-│   │   ├── signin/            # Sign-in screen
-│   │   │   └── bloc/          # Bloc for Sign-in screen
-│   │   └── signup/            # Sign-up screen
-│   │       └── bloc/          # Bloc for Sign-up screen
-│   ├── cart/                  # Cart screen
-│   ├── explore/               # Explore screen
-│   │   └── bloc/              # Bloc for Explore screen
-│   ├── location/              # Location screen
-│   │   └── bloc/              # Bloc for Location screen
-│   ├── pageview/              # PageView screen
-│   │   └── bloc/              # Bloc for PageView screen
-│   ├── profile/               # Profile screen
-│   ├── splash/                # Splash screen
-│   └── store_cart/            # Store Cart screen
-│       ├── bloc/              # Bloc for store_cart screen
-│       └── order/             # Order screen inside store_cart
-│           └── bloc/          # Bloc for Order screen
-├── style/                     # Styling files (themes, colors, text styles)
-├── utility/                   # Utility/helper functions used app-wide
-└── widget/                    # Reusable widgets/components
-    ├── auth/                  # Widgets related to authentication UI
-    ├── bottomNavigation/      # Bottom navigation widgets
-    │   └── bloc/              # Bloc for bottom navigation
-    └── profile_widgets/       # Widgets used in Profile screen
 
 
 ```
