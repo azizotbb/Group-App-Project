@@ -6,11 +6,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class SupabaseConnect {
   static Supabase? supabase;
   //tester
+static final admin = SupabaseClient(dotenv.env["baseURL"].toString(),dotenv.env["roleKey"].toString(),);
 
-  static Supabase? admin;
 
   static Future<void> init() async {
     try {
+      
       await dotenv.load(fileName: ".env");
 
       supabase = await Supabase.initialize(
@@ -99,8 +100,7 @@ class SupabaseConnect {
 
   static Future<dynamic> deleteUser({required String userid}) async {
     try {
-      await admin!.client.auth.admin.deleteUser(userid);
-      // final User? updatedUser = res.user;
+      await admin.auth.admin.deleteUser(userid);
     } on AuthException catch (error) {
       print("2");
 

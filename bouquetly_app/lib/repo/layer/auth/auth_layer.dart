@@ -53,6 +53,7 @@ class AuthLayer {
     }
   }
 
+  // it must be verified from both emails the old email and the new email
   updateEmail({required String email}) async{
        try {
        await SupabaseConnect.updateEmail(

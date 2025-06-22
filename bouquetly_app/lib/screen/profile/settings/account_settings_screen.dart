@@ -1,13 +1,12 @@
 import 'package:bouquetly_app/extension/app_size.dart';
-import 'package:bouquetly_app/repo/layer/auth/auth_layer.dart';
 import 'package:bouquetly_app/screen/profile/settings/bloc/settings_bloc.dart';
+import 'package:bouquetly_app/screen/splash/splash_screen.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/background_img.dart';
 import 'package:bouquetly_app/widget/profile_widgets/custom_field.dart';
 import 'package:bouquetly_app/widget/profile_widgets/option_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({super.key});
@@ -44,6 +43,7 @@ class AccountSettingsScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 8),
                           Text(
+                            //For Edit
                             'Flowey The Flower',
                             style: AppTextStyle.headerText.copyWith(
                               fontWeight: FontWeight.bold,
@@ -63,85 +63,6 @@ class AccountSettingsScreen extends StatelessWidget {
                                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   //Here every option is a button you can use it be using the attribute onPressed
-                                  OptionRow(
-                                    onPressed: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return Dialog(
-                                            backgroundColor:
-                                                const Color.fromARGB(
-                                                  188,
-                                                  255,
-                                                  255,
-                                                  255,
-                                                ),
-                                            child: Container(
-                                              padding: EdgeInsets.all(16),
-                                              width: context.getWidth() * 0.586,
-                                              height: context.getHight() * 0.36,
-                                              child: Form(
-                                                key: bloc.globalKey,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text(
-                                                      'Enter your new name',
-                                                      style: AppTextStyle
-                                                          .headerText
-                                                          .copyWith(
-                                                            fontSize: 20,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                    ),
-
-                                                    CustomField(
-                                                      validator: (p0) {
-                                                        if (p0 == null ||
-                                                            p0.isEmpty) {
-                                                          return 'Please enter your new name';
-                                                        } else if (RegExp(
-                                                          r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]',
-                                                        ).hasMatch(p0)) {
-                                                          return 'Enter a valid name ';
-                                                        }
-                                                        return null;
-                                                      },
-                                                      controller: bloc.newName,
-                                                      setHint: 'Your Name',
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        if (bloc
-                                                            .globalKey
-                                                            .currentState!
-                                                            .validate()) {
-                                                          GetIt.I
-                                                              .get<AuthLayer>();
-                                                          print('object');
-                                                        }
-                                                      },
-                                                      child: Text(
-                                                        'Change',
-                                                        style: TextStyle(
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                    setIcon: Icons.location_on,
-                                    setText: 'Change Name',
-                                  ),
                                   OptionRow(
                                     onPressed: () {
                                       showDialog(
@@ -225,13 +146,9 @@ class AccountSettingsScreen extends StatelessWidget {
                                                             .currentState!
                                                             .validate()) {
                                                           print('object');
-                                                          GetIt.I
-                                                              .get<AuthLayer>()
-                                                              .updateEmail(
-                                                                email: bloc
-                                                                    .confirmEmail,
-                                                              );
-                                                          print('done');
+                                                         bloc.add(UpdateEmailEvent());
+                                                         Navigator.pop(context);
+                                                         print('done');
                                                         }
                                                       },
                                                       child: Text(
@@ -256,13 +173,15 @@ class AccountSettingsScreen extends StatelessWidget {
                                   OptionRow(
                                     onPressed: () {
                                       print('Done');
-                                      GetIt.I.get<AuthLayer>().deleteUser(GetIt.I.get<AuthLayer>().userID);
+                                      bloc.add(DeleteAccountEvent());
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SplashScreen()));
+                                      print('logged out');
                                     },
                                     setIcon: Icons.delete,
                                     setText: 'Delete Account',
                                   ),
                                   OptionRow(
-                                    onPressed: () {},
+                                    onPressed: () {Navigator.pop(context);},
                                     setIcon: Icons.arrow_back,
                                     setText: 'Back',
                                   ),
