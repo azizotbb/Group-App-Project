@@ -12,4 +12,8 @@ class OrderLayer {
       userid: userid,
     );
   }
+
+  getorders({required String userid}) async {
+    return await SupabaseConnect.getOrderByUser(userid: userid);
+  }
 }

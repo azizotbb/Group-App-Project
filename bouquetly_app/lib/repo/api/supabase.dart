@@ -98,4 +98,13 @@ class SupabaseConnect {
       throw FormatException("There is error with sign Up");
     }
   }
+  //get orders
+
+  static Future<List<dynamic>> getOrderByUser({required String userid}) async {
+    final responce = await supabase!.client
+        .from("orders")
+        .select()
+        .eq("userid", userid);
+    return responce;
+  }
 }

@@ -7,4 +7,9 @@ final class OrderInitial extends OrderState {}
 
 class orderLoding extends OrderState{}
 
-class orderSuccces extends OrderState{}
+class orderSuccces extends OrderState{
+  final List<dynamic> orders;
+
+  orderSuccces({required this.orders}); 
+  
+}

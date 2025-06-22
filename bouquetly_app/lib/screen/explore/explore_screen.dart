@@ -1,6 +1,7 @@
 import 'package:bouquetly_app/screen/explore/bloc/explore_bloc.dart';
 import 'package:bouquetly_app/screen/location/location.dart';
 import 'package:bouquetly_app/screen/pageview/page_view.dart';
+import 'package:bouquetly_app/screen/store_cart/orderScreen.dart';
 import 'package:bouquetly_app/style/app_colors.dart';
 import 'package:bouquetly_app/style/app_text_style.dart';
 import 'package:bouquetly_app/widget/custom_explore_item.dart';
@@ -41,6 +42,28 @@ class ExploreScreen extends StatelessWidget {
                     ),
                   ),
                   ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text("your order"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Orderscreen()),
+                      );
+                    },
+                  ),
+
+                  ListTile(
+                    leading: Icon(Icons.map_outlined),
+                    title: Text("Store Location"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Location()),
+                      );
+                    },
+                  ),
+
+                  ListTile(
                     leading: Icon(Icons.info),
                     title: Text("About Us and Contacts"),
                     onTap: () {
@@ -49,17 +72,6 @@ class ExploreScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => PageViewBasic(),
                         ),
-                      );
-                    },
-                  ),
-
-                  ListTile(
-                    leading: Icon(Icons.inventory),
-                    title: Text("Store Location"),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Location()),
                       );
                     },
                   ),
