@@ -5,13 +5,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SupabaseConnect {
   static Supabase? supabase;
-  //tester
-static final admin = SupabaseClient(dotenv.env["baseURL"].toString(),dotenv.env["roleKey"].toString(),);
-
+  static final admin = SupabaseClient(
+    dotenv.env["baseURL"].toString(),
+    dotenv.env["roleKey"].toString(),
+  );
 
   static Future<void> init() async {
     try {
-      
       await dotenv.load(fileName: ".env");
 
       supabase = await Supabase.initialize(
@@ -37,15 +37,10 @@ static final admin = SupabaseClient(dotenv.env["baseURL"].toString(),dotenv.env[
         email: email,
         data: {'username': userName},
       );
-      print("1");
       return user.user;
     } on AuthException catch (error) {
-      print("2");
-
       throw AuthException(error.message);
     } catch (error) {
-      print("3");
-
       throw FormatException("There is error with sign Up");
     }
   }
@@ -88,12 +83,8 @@ static final admin = SupabaseClient(dotenv.env["baseURL"].toString(),dotenv.env[
       await supabase!.client.auth.updateUser(UserAttributes(email: email));
       // final User? updatedUser = res.user;
     } on AuthException catch (error) {
-      print("2");
-
       throw AuthException(error.message);
     } catch (error) {
-      print("3");
-
       throw FormatException("There is error with sign Up");
     }
   }
@@ -102,12 +93,8 @@ static final admin = SupabaseClient(dotenv.env["baseURL"].toString(),dotenv.env[
     try {
       await admin.auth.admin.deleteUser(userid);
     } on AuthException catch (error) {
-      print("2");
-
       throw AuthException(error.message);
     } catch (error) {
-      print("3");
-
       throw FormatException("There is error with sign Up");
     }
   }
