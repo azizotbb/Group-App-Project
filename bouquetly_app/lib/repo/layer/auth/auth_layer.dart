@@ -68,7 +68,7 @@ class AuthLayer {
     try {
       await SupabaseConnect.deleteUser(userid: userID);
     } on AuthException catch (error) {
-      throw AuthException(error.message);
+      print(error.message);
     } catch (error) {
       throw FormatException(error.toString());
     }

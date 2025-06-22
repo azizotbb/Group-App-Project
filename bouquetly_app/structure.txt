@@ -1,0 +1,36 @@
+lib
+├── extension
+├── model
+│   └── -
+├── repo
+│   ├── api
+│   └── layer
+│       └── auth
+├── screen
+│   ├── auth
+│   │   ├── signin
+│   │   │   └── bloc
+│   │   └── signup
+│   │       └── bloc
+│   ├── cart
+│   ├── explore
+│   │   └── bloc
+│   ├── location
+│   │   └── bloc
+│   ├── pageview
+│   │   └── bloc
+│   ├── profile
+│   ├── splash
+│   └── store_cart
+│       ├── bloc
+│       └── order
+│           └── bloc
+├── style
+├── utility
+└── widget
+    ├── auth
+    ├── bottomNavigation
+    │   └── bloc
+    └── profile_widgets
+
+33 directories, 1 file

@@ -1,4 +1,3 @@
-import 'package:bouquetly_app/model/itemModel.dart';
 import 'package:bouquetly_app/screen/store_cart/bloc/store_bloc.dart';
 import 'package:bouquetly_app/widget/categoryWidget.dart';
 import 'package:bouquetly_app/widget/itemWidget.dart';

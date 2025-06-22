@@ -35,6 +35,7 @@ class ProfileScreen extends StatelessWidget {
                       clipBehavior: Clip.hardEdge,
                       child: Container(),
                     ),
+
                     SizedBox(height: 8),
                     Text(
                       authGetit.username,
