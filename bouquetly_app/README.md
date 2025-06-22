@@ -49,8 +49,7 @@ A modern Flutter-based flower shop app that allows users to browse curated bouqu
 - 🌸 Browse curated flower bouquets
 - 🗺️ Google Maps integration for pickup location
 - 🎠 Carousel-based product browsing
-- 👤 User Profile & Order Summary
-- 💳 Payment screen (UI)
+- 👤 User Profile 
 - 🎨 Clean UI with Google Fonts and smooth animations
 
 
@@ -122,7 +121,7 @@ lib
 
 ```
 
-🧭 How to Use
+# 🧭 How to Use
 Open the app
 
 Sign in or create an account
@@ -136,7 +135,7 @@ Proceed to checkout
 Visit the store to pick up your beautifully prepared bouquet 🌸
 
 
-👥 Team
+# 👥 Team
 
 Norah200@
 https://github.com/Norah200
