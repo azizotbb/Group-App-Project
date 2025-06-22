@@ -28,15 +28,12 @@ class ProfileScreen extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.amber,
+                        color: Colors.white,
                       ),
                       width: context.getWidth() * 0.3,
                       height: context.getWidth() * 0.3,
                       clipBehavior: Clip.hardEdge,
-                      child: Image.asset(
-                        'assets/images/flowey.png',
-                        fit: BoxFit.cover,
-                      ),
+                      child: Container(),
                     ),
                     SizedBox(height: 8),
                     Text(
@@ -90,7 +87,15 @@ class ProfileScreen extends StatelessWidget {
                                       ),
                                       actions: [
                                         TextButton(
-                                          onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SplashScreen()));},
+                                          onPressed: () {
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SplashScreen(),
+                                              ),
+                                            );
+                                          },
                                           child: Text(
                                             'Logout',
                                             style: TextStyle(

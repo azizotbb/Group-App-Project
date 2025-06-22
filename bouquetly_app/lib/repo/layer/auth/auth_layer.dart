@@ -54,34 +54,23 @@ class AuthLayer {
   }
 
   // it must be verified from both emails the old email and the new email
-  updateEmail({required String email}) async{
-       try {
-       await SupabaseConnect.updateEmail(
-        
-        email: email,
-        
-      );
-      
+  updateEmail({required String email}) async {
+    try {
+      await SupabaseConnect.updateEmail(email: email);
     } on AuthException catch (error) {
       throw AuthException(error.message);
     } catch (error) {
       throw FormatException(error.toString());
     }
   }
-  deleteUser(String id) async{
-       try {
-       await SupabaseConnect.deleteUser(
-        
-        userid: userID,
-        
-      );
-      
-    } on AuthException catch (error) {
-      throw AuthException(error.message);
-    } catch (error) {
-      throw FormatException(error.toString());
-    }
-  }
-  
-}
 
+  deleteUser(String id) async {
+    try {
+      await SupabaseConnect.deleteUser(userid: userID);
+    } on AuthException catch (error) {
+      throw AuthException(error.message);
+    } catch (error) {
+      throw FormatException(error.toString());
+    }
+  }
+}

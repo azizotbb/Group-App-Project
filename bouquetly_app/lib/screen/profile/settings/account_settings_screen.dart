@@ -31,20 +31,16 @@ class AccountSettingsScreen extends StatelessWidget {
                           Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.amber,
+                              color: Colors.white,
                             ),
                             width: context.getWidth() * 0.3,
                             height: context.getWidth() * 0.3,
                             clipBehavior: Clip.hardEdge,
-                            child: Image.asset(
-                              'assets/images/flowey.png',
-                              fit: BoxFit.cover,
-                            ),
+                            child: Container(),
                           ),
                           SizedBox(height: 8),
                           Text(
-                            //For Edit
-                            'Flowey The Flower',
+                            bloc.auth.username,
                             style: AppTextStyle.headerText.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -146,9 +142,13 @@ class AccountSettingsScreen extends StatelessWidget {
                                                             .currentState!
                                                             .validate()) {
                                                           print('object');
-                                                         bloc.add(UpdateEmailEvent());
-                                                         Navigator.pop(context);
-                                                         print('done');
+                                                          bloc.add(
+                                                            UpdateEmailEvent(),
+                                                          );
+                                                          Navigator.pop(
+                                                            context,
+                                                          );
+                                                          print('done');
                                                         }
                                                       },
                                                       child: Text(
@@ -174,14 +174,21 @@ class AccountSettingsScreen extends StatelessWidget {
                                     onPressed: () {
                                       print('Done');
                                       bloc.add(DeleteAccountEvent());
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SplashScreen()));
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => SplashScreen(),
+                                        ),
+                                      );
                                       print('logged out');
                                     },
                                     setIcon: Icons.delete,
                                     setText: 'Delete Account',
                                   ),
                                   OptionRow(
-                                    onPressed: () {Navigator.pop(context);},
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
                                     setIcon: Icons.arrow_back,
                                     setText: 'Back',
                                   ),

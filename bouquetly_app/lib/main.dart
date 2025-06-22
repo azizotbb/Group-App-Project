@@ -19,7 +19,6 @@ void main() async {
 
   runApp(const MyApp());
 
-  // Enable verbose logging for debugging (remove in production)
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   // Initialize with your OneSignal App ID
   OneSignal.initialize("ae906282-b83e-4976-b807-db3c90608b6b");
